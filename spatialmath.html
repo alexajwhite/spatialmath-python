@@ -4240,7 +4240,7 @@ Original authors: Luis Fernando Lara Tobar and Peter Corke
 <h2>Low-level (base) functions<a class="headerlink" href="#low-level-base-functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-spatialmath.base.transforms3d">
 <span id="spatialmath-base-transforms-3d"></span><h3>spatialmath.base.transforms 3D<a class="headerlink" href="#module-spatialmath.base.transforms3d" title="Permalink to this headline">¶</a></h3>
-<p>This modules contains functions to create and transform rotation matrices
+<p>This modules contains functions to create and transform 3D rotation matrices
 and homogeneous tranformation matrices.</p>
 <p>Vector arguments are what numpy refers to as <code class="docutils literal notranslate"><span class="pre">array_like</span></code> and can be a list,
 tuple, numpy array, numpy row vector or numpy column vector.</p>
@@ -4251,6 +4251,7 @@ tuple, numpy array, numpy row vector or numpy column vector.</p>
 <li><p>Josh Carrigg Hodson, Aditya Dua, Chee Ho Chan, 2017</p></li>
 <li><p>Peter Corke, 2020</p></li>
 </ol>
+</div></blockquote>
 <p>TODO:</p>
 <blockquote>
 <div><ul class="simple">
@@ -4258,7 +4259,6 @@ tuple, numpy array, numpy row vector or numpy column vector.</p>
 <li><p>trjac, trjac2</p></li>
 <li><p>tranimate, tranimate2</p></li>
 </ul>
-</div></blockquote>
 </div></blockquote>
 <dl class="py function">
 <dt id="spatialmath.base.transforms3d.angvec2r">
@@ -4286,6 +4286,11 @@ equivalent to a rotation of <code class="docutils literal notranslate"><span cla
 <li><p>If <code class="docutils literal notranslate"><span class="pre">THETA</span> <span class="pre">==</span> <span class="pre">0</span></code> then return identity matrix.</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">THETA</span> <span class="pre">~=</span> <span class="pre">0</span></code> then <code class="docutils literal notranslate"><span class="pre">V</span></code> must have a finite length.</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.angvec2tr" title="spatialmath.base.transforms3d.angvec2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">angvec2tr()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2angvec" title="spatialmath.base.transforms3d.tr2angvec"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2angvec()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4315,6 +4320,11 @@ equivalent to a rotation of <code class="docutils literal notranslate"><span cla
 <li><p>If <code class="docutils literal notranslate"><span class="pre">THETA</span> <span class="pre">~=</span> <span class="pre">0</span></code> then <code class="docutils literal notranslate"><span class="pre">V</span></code> must have a finite length.</p></li>
 <li><p>The translational part is zero.</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.angvec2r" title="spatialmath.base.transforms3d.angvec2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">angvec2r()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2angvec" title="spatialmath.base.transforms3d.tr2angvec"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2angvec()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4350,6 +4360,11 @@ to rotations about the Z, Y, Z axes respectively.</p></li>
 <code class="docutils literal notranslate"><span class="pre">EUL</span></code> which is a 3-vector (array_like) with values
 (PHI THETA PSI).</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.rpy2r" title="spatialmath.base.transforms3d.rpy2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">rpy2r()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.eul2tr" title="spatialmath.base.transforms3d.eul2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">eul2tr()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2eul" title="spatialmath.base.transforms3d.tr2eul"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2eul()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4384,6 +4399,11 @@ to rotations about the Z, Y, Z axes respectively.</p></li>
 <ul class="simple">
 <li><p>The translational part is zero.</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.rpy2tr" title="spatialmath.base.transforms3d.rpy2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">rpy2tr()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.eul2r" title="spatialmath.base.transforms3d.eul2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">eul2r()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2eul" title="spatialmath.base.transforms3d.tr2eul"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2eul()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4411,7 +4431,7 @@ validitity of the bottom row.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Seealso</dt>
-<dd class="field-odd"><p>isR, isrot, ishom2</p>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transformsNd.isR" title="spatialmath.base.transformsNd.isR"><code class="xref py py-func docutils literal notranslate"><span class="pre">isR()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.isrot" title="spatialmath.base.transforms3d.isrot"><code class="xref py py-func docutils literal notranslate"><span class="pre">isrot()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms2d.ishom2" title="spatialmath.base.transforms2d.ishom2"><code class="xref py py-func docutils literal notranslate"><span class="pre">ishom2()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4440,7 +4460,7 @@ validitity of the bottom row.</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Seealso</dt>
-<dd class="field-odd"><p>isR, isrot2, ishom</p>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transformsNd.isR" title="spatialmath.base.transformsNd.isR"><code class="xref py py-func docutils literal notranslate"><span class="pre">isR()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms2d.isrot2" title="spatialmath.base.transforms2d.isrot2"><code class="xref py py-func docutils literal notranslate"><span class="pre">isrot2()</span></code></a>,  <a class="reference internal" href="#spatialmath.base.transforms3d.ishom" title="spatialmath.base.transforms3d.ishom"><code class="xref py py-func docutils literal notranslate"><span class="pre">ishom()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4489,6 +4509,11 @@ rotation matrix</p></li>
 <li><p>O and A do not have to be orthogonal, so long as they are not parallel</p></li>
 <li><p>The vectors O and A are parallel to the Y- and Z-axes of the equivalent coordinate frame.</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.oa2tr" title="spatialmath.base.transforms3d.oa2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">oa2tr()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4531,6 +4556,11 @@ rotation matrix</p></li>
 <li><p>The translational part is zero.</p></li>
 <li><p>The vectors O and A are parallel to the Y- and Z-axes of the equivalent coordinate frame.</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.oa2r" title="spatialmath.base.transforms3d.oa2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">oa2r()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4556,6 +4586,11 @@ rotation matrix</p></li>
 of THETA radians about the x-axis</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rotx(THETA,</span> <span class="pre">&quot;deg&quot;)</span></code> as above but THETA is in degrees</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.trotx" title="spatialmath.base.transforms3d.trotx"><code class="xref py py-func docutils literal notranslate"><span class="pre">trotx()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4581,6 +4616,11 @@ of THETA radians about the x-axis</p></li>
 of THETA radians about the y-axis</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">roty(THETA,</span> <span class="pre">&quot;deg&quot;)</span></code> as above but THETA is in degrees</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.troty" title="spatialmath.base.transforms3d.troty"><code class="xref py py-func docutils literal notranslate"><span class="pre">troty()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4606,11 +4646,16 @@ of THETA radians about the y-axis</p></li>
 of THETA radians about the z-axis</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rotz(THETA,</span> <span class="pre">&quot;deg&quot;)</span></code> as above but THETA is in degrees</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">yrotz()</span></code></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="spatialmath.base.transforms3d.rpy2r">
-<code class="sig-prename descclassname">spatialmath.base.transforms3d.</code><code class="sig-name descname">rpy2r</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">roll</span></em>, <em class="sig-param"><span class="n">pitch</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yaw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">unit</span><span class="o">=</span><span class="default_value">'rad'</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">'zyx'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialmath/base/transforms3d.html#rpy2r"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spatialmath.base.transforms3d.rpy2r" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">spatialmath.base.transforms3d.</code><code class="sig-name descname">rpy2r</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">roll</span></em>, <em class="sig-param"><span class="n">pitch</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">yaw</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">unit</span><span class="o">=</span><span class="default_value">'rad'</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">'zyx'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/spatialmath/base/transforms3d.html#rpy2r"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#spatialmath.base.transforms3d.rpy2r" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create an SO(3) rotation matrix from roll-pitch-yaw angles</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -4651,6 +4696,11 @@ to the optic axis and x-axis parallel to the pixel rows.</p></li>
 from <code class="docutils literal notranslate"><span class="pre">RPY</span></code> which is a 3-vector (array_like) with values
 (ROLL, PITCH, YAW).</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.eul2r" title="spatialmath.base.transforms3d.eul2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">eul2r()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.rpy2tr" title="spatialmath.base.transforms3d.rpy2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">rpy2tr()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2rpy" title="spatialmath.base.transforms3d.tr2rpy"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2rpy()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4700,6 +4750,11 @@ from <code class="docutils literal notranslate"><span class="pre">RPY</span></co
 <ul class="simple">
 <li><p>The translational part is zero.</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.eul2tr" title="spatialmath.base.transforms3d.eul2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">eul2tr()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.rpy2r" title="spatialmath.base.transforms3d.rpy2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">rpy2r()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2rpy" title="spatialmath.base.transforms3d.tr2rpy"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2rpy()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4730,7 +4785,7 @@ acts that corresponds to the rotation part of <code class="docutils literal notr
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Seealso</dt>
-<dd class="field-odd"><p>angvec2r, angvec2tr, tr2rpy, tr2eul</p>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.angvec2r" title="spatialmath.base.transforms3d.angvec2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">angvec2r()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.angvec2tr" title="spatialmath.base.transforms3d.angvec2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">angvec2tr()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2rpy" title="spatialmath.base.transforms3d.tr2rpy"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2rpy()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2eul" title="spatialmath.base.transforms3d.tr2eul"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2eul()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4767,7 +4822,7 @@ Z, Y and Z axes respectively.</p>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Seealso</dt>
-<dd class="field-odd"><p>eul2r, eul2tr, tr2rpy, tr2angvec</p>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.eul2r" title="spatialmath.base.transforms3d.eul2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">eul2r()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.eul2tr" title="spatialmath.base.transforms3d.eul2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">eul2tr()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2rpy" title="spatialmath.base.transforms3d.tr2rpy"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2rpy()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2angvec" title="spatialmath.base.transforms3d.tr2angvec"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2angvec()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4809,7 +4864,7 @@ setting:</p>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Seealso</dt>
-<dd class="field-odd"><p>rpy2r, rpy2tr, tr2eul, tr2angvec</p>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.rpy2r" title="spatialmath.base.transforms3d.rpy2r"><code class="xref py py-func docutils literal notranslate"><span class="pre">rpy2r()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.rpy2tr" title="spatialmath.base.transforms3d.rpy2tr"><code class="xref py py-func docutils literal notranslate"><span class="pre">rpy2tr()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2eul" title="spatialmath.base.transforms3d.tr2eul"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2eul()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2angvec" title="spatialmath.base.transforms3d.tr2angvec"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2angvec()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4845,6 +4900,11 @@ list, dict, or a numpy array, row or column vector.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">=</span> <span class="pre">TRANSL(T)</span></code> is the translational part of a homogeneous transform T as a
 3-element numpy array.</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms2d.transl2" title="spatialmath.base.transforms2d.transl2"><code class="xref py py-func docutils literal notranslate"><span class="pre">transl2()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4899,7 +4959,7 @@ matrix.</p></li>
 <blockquote>
 <div><dl class="field-list simple">
 <dt class="field-odd">seealso</dt>
-<dd class="field-odd"><p>trlog, trexp2</p>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">trexp2()</span></code></p>
 </dd>
 </dl>
 </div></blockquote>
@@ -4934,7 +4994,7 @@ vector (6x1) comprising [v w].</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Seealso</dt>
-<dd class="field-odd"><p>trexp, vex, vexa</p>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.trexp" title="spatialmath.base.transforms3d.trexp"><code class="xref py py-func docutils literal notranslate"><span class="pre">trexp()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transformsNd.vex" title="spatialmath.base.transformsNd.vex"><code class="xref py py-func docutils literal notranslate"><span class="pre">vex()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transformsNd.vexa" title="spatialmath.base.transformsNd.vexa"><code class="xref py py-func docutils literal notranslate"><span class="pre">vexa()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -4961,6 +5021,11 @@ of THETA radians about the x-axis.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trotx(THETA,</span> <span class="pre">'deg')</span></code> as above but THETA is in degrees</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trotx(THETA,</span> <span class="pre">'rad',</span> <span class="pre">t=[x,y,z])</span></code> as above with translation of [x,y,z]</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.rotx" title="spatialmath.base.transforms3d.rotx"><code class="xref py py-func docutils literal notranslate"><span class="pre">rotx()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -4988,6 +5053,11 @@ of THETA radians about the y-axis.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">troty(THETA,</span> <span class="pre">'deg')</span></code> as above but THETA is in degrees</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">troty(THETA,</span> <span class="pre">'rad',</span> <span class="pre">t=[x,y,z])</span></code> as above with translation of [x,y,z]</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.roty" title="spatialmath.base.transforms3d.roty"><code class="xref py py-func docutils literal notranslate"><span class="pre">roty()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -5015,6 +5085,11 @@ of THETA radians about the z-axis.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trotz(THETA,</span> <span class="pre">'deg')</span></code> as above but THETA is in degrees</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">trotz(THETA,</span> <span class="pre">'rad',</span> <span class="pre">t=[x,y,z])</span></code> as above with translation of [x,y,z]</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Seealso</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms3d.rotz" title="spatialmath.base.transforms3d.rotz"><code class="xref py py-func docutils literal notranslate"><span class="pre">rotz()</span></code></a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -5080,7 +5155,7 @@ specified with the options ‘xyz’ or ‘yxz’ which are passed through to <c
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Seealso</dt>
-<dd class="field-odd"><p>trprint2, tr2eul, tr2rpy, tr2angvec</p>
+<dd class="field-odd"><p><a class="reference internal" href="#spatialmath.base.transforms2d.trprint2" title="spatialmath.base.transforms2d.trprint2"><code class="xref py py-func docutils literal notranslate"><span class="pre">trprint2()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2eul" title="spatialmath.base.transforms3d.tr2eul"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2eul()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2rpy" title="spatialmath.base.transforms3d.tr2rpy"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2rpy()</span></code></a>, <a class="reference internal" href="#spatialmath.base.transforms3d.tr2angvec" title="spatialmath.base.transforms3d.tr2angvec"><code class="xref py py-func docutils literal notranslate"><span class="pre">tr2angvec()</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

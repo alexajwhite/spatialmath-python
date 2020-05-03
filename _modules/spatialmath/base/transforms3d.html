@@ -51,7 +51,7 @@
             
   <h1>Source code for spatialmath.base.transforms3d</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">This modules contains functions to create and transform rotation matrices</span>
+<span class="sd">This modules contains functions to create and transform 3D rotation matrices</span>
 <span class="sd">and homogeneous tranformation matrices.</span>
 
 <span class="sd">Vector arguments are what numpy refers to as ``array_like`` and can be a list,</span>
@@ -63,11 +63,11 @@
 <span class="sd">    2. Josh Carrigg Hodson, Aditya Dua, Chee Ho Chan, 2017</span>
 <span class="sd">    3. Peter Corke, 2020</span>
 <span class="sd">    </span>
-<span class="sd">    TODO:</span>
+<span class="sd">TODO:</span>
 <span class="sd">        </span>
-<span class="sd">        - trinterp</span>
-<span class="sd">        - trjac, trjac2</span>
-<span class="sd">        - tranimate, tranimate2</span>
+<span class="sd">    - trinterp</span>
+<span class="sd">    - trjac, trjac2</span>
+<span class="sd">    - tranimate, tranimate2</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -119,6 +119,8 @@
 <span class="sd">    - ``rotx(THETA)`` is an SO(3) rotation matrix (3x3) representing a rotation</span>
 <span class="sd">      of THETA radians about the x-axis</span>
 <span class="sd">    - ``rotx(THETA, &quot;deg&quot;)`` as above but THETA is in degrees</span>
+<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~trotx`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">theta</span> <span class="o">=</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">getunit</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span>
@@ -146,6 +148,8 @@
 <span class="sd">    - ``roty(THETA)`` is an SO(3) rotation matrix (3x3) representing a rotation</span>
 <span class="sd">      of THETA radians about the y-axis</span>
 <span class="sd">    - ``roty(THETA, &quot;deg&quot;)`` as above but THETA is in degrees</span>
+<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~troty`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">theta</span> <span class="o">=</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">getunit</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span>
@@ -173,6 +177,8 @@
 <span class="sd">    - ``rotz(THETA)`` is an SO(3) rotation matrix (3x3) representing a rotation</span>
 <span class="sd">      of THETA radians about the z-axis</span>
 <span class="sd">    - ``rotz(THETA, &quot;deg&quot;)`` as above but THETA is in degrees</span>
+<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~yrotz`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">getunit</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span>
     <span class="n">ct</span> <span class="o">=</span> <span class="n">_cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
@@ -201,6 +207,8 @@
 <span class="sd">      of THETA radians about the x-axis.</span>
 <span class="sd">    - ``trotx(THETA, &#39;deg&#39;)`` as above but THETA is in degrees</span>
 <span class="sd">    - ``trotx(THETA, &#39;rad&#39;, t=[x,y,z])`` as above with translation of [x,y,z]</span>
+<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~rotx`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">T</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span> <span class="n">rotx</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">unit</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span> <span class="p">)</span>
     <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -227,6 +235,8 @@
 <span class="sd">      of THETA radians about the y-axis.</span>
 <span class="sd">    - ``troty(THETA, &#39;deg&#39;)`` as above but THETA is in degrees</span>
 <span class="sd">    - ``troty(THETA, &#39;rad&#39;, t=[x,y,z])`` as above with translation of [x,y,z]</span>
+<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~roty`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">T</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span> <span class="n">roty</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">unit</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span> <span class="p">)</span>
     <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -253,6 +263,8 @@
 <span class="sd">      of THETA radians about the z-axis.</span>
 <span class="sd">    - ``trotz(THETA, &#39;deg&#39;)`` as above but THETA is in degrees</span>
 <span class="sd">    - ``trotz(THETA, &#39;rad&#39;, t=[x,y,z])`` as above with translation of [x,y,z]</span>
+<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~rotz`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">T</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span> <span class="n">rotz</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">unit</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span> <span class="p">)</span>
     <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -286,6 +298,8 @@
 
 <span class="sd">    - ``P = TRANSL(T)`` is the translational part of a homogeneous transform T as a</span>
 <span class="sd">      3-element numpy array.</span>
+<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~spatialmath.base.transforms2d.transl2`</span>
 <span class="sd">   &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -318,7 +332,7 @@
 <span class="sd">    - ``ISHOM(T, check=True)`` as above, but also checks orthogonality of the rotation sub-matrix and </span>
 <span class="sd">      validitity of the bottom row.</span>
 <span class="sd">    </span>
-<span class="sd">    :seealso: isR, isrot, ishom2</span>
+<span class="sd">    :seealso: :func:`~spatialmath.base.transformsNd.isR`, :func:`~isrot`, :func:`~spatialmath.base.transforms2d.ishom2`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">check</span> <span class="ow">or</span> <span class="p">(</span><span class="n">trn</span><span class="o">.</span><span class="n">isR</span><span class="p">(</span><span class="n">T</span><span class="p">[:</span><span class="mi">3</span><span class="p">,:</span><span class="mi">3</span><span class="p">],</span> <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">3</span><span class="p">,:]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))))</span></div>
 
@@ -336,13 +350,13 @@
 <span class="sd">    - ``ISROT(R)`` is True if the argument ``R`` is of dimension 3x3</span>
 <span class="sd">    - ``ISROT(R, check=True)`` as above, but also checks orthogonality of the rotation matrix.</span>
 <span class="sd">    </span>
-<span class="sd">    :seealso: isR, isrot2, ishom</span>
+<span class="sd">    :seealso: :func:`~spatialmath.base.transformsNd.isR`, :func:`~spatialmath.base.transforms2d.isrot2`,  :func:`~ishom`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">check</span> <span class="ow">or</span> <span class="n">trn</span><span class="o">.</span><span class="n">isR</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">))</span></div>
 
 
 <span class="c1"># ---------------------------------------------------------------------------------------#</span>
-<div class="viewcode-block" id="rpy2r"><a class="viewcode-back" href="../../../spatialmath.html#spatialmath.base.transforms3d.rpy2r">[docs]</a><span class="k">def</span> <span class="nf">rpy2r</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yaw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;rad&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;zyx&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="rpy2r"><a class="viewcode-back" href="../../../spatialmath.html#spatialmath.base.transforms3d.rpy2r">[docs]</a><span class="k">def</span> <span class="nf">rpy2r</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">yaw</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;rad&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;zyx&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create an SO(3) rotation matrix from roll-pitch-yaw angles</span>
 
@@ -375,7 +389,9 @@
 <span class="sd">          </span>
 <span class="sd">    - ``rpy2r(RPY)`` as above but the roll, pitch, yaw angles are taken</span>
 <span class="sd">      from ``RPY`` which is a 3-vector (array_like) with values</span>
-<span class="sd">      (ROLL, PITCH, YAW). </span>
+<span class="sd">      (ROLL, PITCH, YAW).</span>
+<span class="sd">      </span>
+<span class="sd">    :seealso: :func:`~eul2r`, :func:`~rpy2tr`, :func:`~tr2rpy`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">roll</span><span class="p">):</span>
@@ -436,6 +452,8 @@
 <span class="sd">    Notes:</span>
 <span class="sd">        </span>
 <span class="sd">    - The translational part is zero.</span>
+<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~eul2tr`, :func:`~rpy2r`, :func:`~tr2rpy`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">R</span> <span class="o">=</span> <span class="n">rpy2r</span><span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">)</span>
@@ -462,7 +480,9 @@
 <span class="sd">      to rotations about the Z, Y, Z axes respectively.</span>
 <span class="sd">    - ``R = eul2r(EUL)`` as above but the Euler angles are taken from</span>
 <span class="sd">      ``EUL`` which is a 3-vector (array_like) with values</span>
-<span class="sd">      (PHI THETA PSI). </span>
+<span class="sd">      (PHI THETA PSI).</span>
+<span class="sd">      </span>
+<span class="sd">    :seealso: :func:`~rpy2r`, :func:`~eul2tr`, :func:`~tr2eul`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">phi</span><span class="p">):</span>
@@ -501,6 +521,8 @@
 <span class="sd">    Notes:</span>
 <span class="sd">        </span>
 <span class="sd">    - The translational part is zero.</span>
+
+<span class="sd">    :seealso: :func:`~rpy2tr`, :func:`~eul2r`, :func:`~tr2eul`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="n">R</span> <span class="o">=</span> <span class="n">eul2r</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">)</span>
@@ -527,6 +549,8 @@
 <span class="sd">        </span>
 <span class="sd">    - If ``THETA == 0`` then return identity matrix.</span>
 <span class="sd">    - If ``THETA ~= 0`` then ``V`` must have a finite length.</span>
+
+<span class="sd">    :seealso: :func:`~angvec2tr`, :func:`~tr2angvec`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="ow">and</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">isvector</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="s2">&quot;Arguments must be theta and vector&quot;</span>
     
@@ -564,6 +588,8 @@
 <span class="sd">    - If ``THETA == 0`` then return identity matrix.</span>
 <span class="sd">    - If ``THETA ~= 0`` then ``V`` must have a finite length.</span>
 <span class="sd">    - The translational part is zero.</span>
+
+<span class="sd">    :seealso: :func:`~angvec2r`, :func:`~tr2angvec`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">trn</span><span class="o">.</span><span class="n">r2t</span><span class="p">(</span><span class="n">angvec2r</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">unit</span><span class="p">))</span></div>
 
@@ -599,6 +625,8 @@
 <span class="sd">    - O and A do not have to be unit-length, they are normalized</span>
 <span class="sd">    - O and A do not have to be orthogonal, so long as they are not parallel</span>
 <span class="sd">    - The vectors O and A are parallel to the Y- and Z-axes of the equivalent coordinate frame.</span>
+
+<span class="sd">    :seealso: :func:`~oa2tr`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">o</span> <span class="o">=</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">getvector</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="s1">&#39;array&#39;</span><span class="p">)</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">getvector</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="s1">&#39;array&#39;</span><span class="p">)</span>
@@ -640,6 +668,8 @@
 <span class="sd">    - O and A do not have to be orthogonal, so long as they are not parallel</span>
 <span class="sd">    - The translational part is zero.</span>
 <span class="sd">    - The vectors O and A are parallel to the Y- and Z-axes of the equivalent coordinate frame.</span>
+
+<span class="sd">    :seealso: :func:`~oa2r`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">trn</span><span class="o">.</span><span class="n">r2t</span><span class="p">(</span><span class="n">oa2r</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span></div>
 
@@ -667,8 +697,7 @@
 <span class="sd">        </span>
 <span class="sd">    - If the input is SE(3) the translation component is ignored.</span>
 <span class="sd">    </span>
-<span class="sd">    :seealso: angvec2r, angvec2tr, tr2rpy, tr2eul</span>
-<span class="sd">    </span>
+<span class="sd">    :seealso: :func:`~angvec2r`, :func:`~angvec2tr`, :func:`~tr2rpy`, :func:`~tr2eul`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">ismatrix</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)):</span>
@@ -721,7 +750,7 @@
 <span class="sd">    - There is a singularity for the case where :math:`\theta=0` in which case :math:`\phi` is arbitrarily set to zero and :math:`\phi` is set to :math:`\phi+\psi`.</span>
 <span class="sd">    - If the input is SE(3) the translation component is ignored.</span>
 <span class="sd">    </span>
-<span class="sd">    :seealso: eul2r, eul2tr, tr2rpy, tr2angvec</span>
+<span class="sd">    :seealso: :func:`~eul2r`, :func:`~eul2tr`, :func:`~tr2rpy`, :func:`~tr2angvec`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">if</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">ismatrix</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)):</span>
@@ -785,7 +814,7 @@
 <span class="sd">    - There is a singularity for the case where P=:math:`\pi/2` in which case R is arbitrarily set to zero and Y is the sum (R+Y).</span>
 <span class="sd">    - If the input is SE(3) the translation component is ignored.</span>
 <span class="sd">    </span>
-<span class="sd">    :seealso: rpy2r, rpy2tr, tr2eul, tr2angvec</span>
+<span class="sd">    :seealso: :func:`~rpy2r`, :func:`~rpy2tr`, :func:`~tr2eul`, :func:`~tr2angvec`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">if</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">ismatrix</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)):</span>
@@ -900,7 +929,7 @@
 <span class="sd">      vector (6x1) comprising [v w].</span>
 
 
-<span class="sd">    :seealso: trexp, vex, vexa</span>
+<span class="sd">    :seealso: :func:`~trexp`, :func:`~spatialmath.base.transformsNd.vex`, :func:`~spatialmath.base.transformsNd.vexa`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">if</span> <span class="n">ishom</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="n">check</span><span class="p">):</span>
@@ -993,7 +1022,7 @@
 <span class="sd">      must represent a unit-twist, ie. the rotational component is a unit-norm skew-symmetric</span>
 <span class="sd">      matrix.</span>
 <span class="sd">     </span>
-<span class="sd">     :seealso: trlog, trexp2</span>
+<span class="sd">     :seealso: :func:`~trlog, :func:`~spatialmath.base.transforms2d.trexp2`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
    
     <span class="k">if</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">ismatrix</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="ow">or</span> <span class="n">argcheck</span><span class="o">.</span><span class="n">isvector</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
@@ -1094,7 +1123,7 @@
 <span class="sd">       specified with the options &#39;xyz&#39; or &#39;yxz&#39; which are passed through to ``tr2rpy``.</span>
 <span class="sd">       &#39;zyx&#39; is the default.</span>
 <span class="sd">      </span>
-<span class="sd">    :seealso: trprint2, tr2eul, tr2rpy, tr2angvec</span>
+<span class="sd">    :seealso: :func:`~spatialmath.base.transforms2d.trprint2`, :func:`~tr2eul`, :func:`~tr2rpy`, :func:`~tr2angvec`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
