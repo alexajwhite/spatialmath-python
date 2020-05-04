@@ -82,8 +82,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../intro.html#vectorization">Vectorization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../spatialmath.html">Spatial Math package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spatialmath.html">Classes and functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../indices.html">Indices</a></li>
 </ul>
 
@@ -158,6 +157,8 @@
 <span class="kn">import</span> <span class="nn">copy</span>
 <span class="kn">from</span> <span class="nn">spatialmath.base</span> <span class="kn">import</span> <span class="n">argcheck</span> 
 <span class="kn">import</span> <span class="nn">spatialmath.base</span> <span class="k">as</span> <span class="nn">tr</span>
+
+<span class="n">_eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
 
 <span class="c1"># colored printing of matrices to the terminal</span>
 <span class="c1">#   colored package has much finer control than colorama, but the latter is available by default with anaconda</span>
@@ -275,7 +276,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;2 bad argument to constructor&#39;</span><span class="p">)</span>
     
     <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">Empty</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
         <span class="n">X</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
         <span class="n">X</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">return</span> <span class="n">X</span>
@@ -297,25 +298,42 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
-        <span class="c1">#print(&#39;getitem&#39;, i)</span>
+        <span class="c1">#print(&#39;getitem&#39;, i, &#39;class&#39;, self.__class__)</span>
         <span class="c1">#return self.__class__(self.data[i])</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
     <span class="c1">#----------------------- tests</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">isSO</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if object belongs to SO(n)</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to test</span>
+<span class="sd">        :return: true if object is instance of SO2 or SO3</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO2&#39;</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO3&#39;</span>
     
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">isSE</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if object belongs to SE(n)</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to test</span>
+<span class="sd">        :return: true if object is instance of SE2 or SE3</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SE2&#39;</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SE3&#39;</span>
     
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">isSO</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO2&#39;</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO3&#39;</span>
-    
-    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">N</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Dimension of the object&#39;s space</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to test</span>
+<span class="sd">        :return: 2 for SO2 or SE2, 3 for SO3 or SE3</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO2&#39;</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SE2&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">2</span>
         <span class="k">else</span><span class="p">:</span>
@@ -324,20 +342,55 @@
     <span class="c1"># compatibility methods</span>
 
     <span class="k">def</span> <span class="nf">isrot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if object belongs to SO(3)</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to test</span>
+<span class="sd">        :return: true if object is instance of SO3</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO3&#39;</span>
 
     <span class="k">def</span> <span class="nf">isrot2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if object belongs to SO(2)</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to test</span>
+<span class="sd">        :return: true if object is instance of SO2</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO2&#39;</span>
 
     <span class="k">def</span> <span class="nf">ishom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if object belongs to SE(3)</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to test</span>
+<span class="sd">        :return: true if object is instance of SE3</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SE3&#39;</span>
 
     <span class="k">def</span> <span class="nf">ishom2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Test if object belongs to SE(2)</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to test</span>
+<span class="sd">        :return: true if object is instance of SE2</span>
+<span class="sd">        :rtype: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SE2&#39;</span>
     
     <span class="c1">#----------------------- properties</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Dimension of the object&#39;s underlying matrix representation</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to test</span>
+<span class="sd">        :return: (2,2) for SO2, (3,3) for SE2 and SO3, and (4,4) for SE3</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span>   <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO2&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SO3&#39;</span><span class="p">:</span>
@@ -347,26 +400,17 @@
         <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;SE3&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
     
-    
-
-    
     <span class="k">def</span> <span class="nf">about</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="c1">#</span>
-<span class="c1">#    def render(self):</span>
-<span class="c1">#        pass</span>
-<span class="c1">#</span>
-<span class="c1">#    def trprint(self):</span>
-<span class="c1">#        pass  # TODO</span>
-<span class="c1">#</span>
-<span class="c1">#    def trplot(self):</span>
-<span class="c1">#        pass  # TODO</span>
-<span class="c1">#</span>
-<span class="c1">#    def trplot2(self):</span>
-<span class="c1">#        pass  # TODO</span>
-<span class="c1">#</span>
-<span class="c1">#    def tranimate(self):</span>
-<span class="c1">#        pass  # TODO</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Display succinct details of object</span>
+<span class="sd">        </span>
+<span class="sd">        :param self: object to display</span>
+<span class="sd">        :type self: SO2, SE2, SO3, SE3</span>
+
+<span class="sd">        Displays the type and the number of elements in compact form, eg. ``SE3[20]``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">[</span><span class="si">{:d}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
+
 
 
     <span class="c1">#----------------------- arithmetic</span>
@@ -502,7 +546,7 @@
 
     <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">left</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">_op2</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">inv</span><span class="p">(),</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span> <span class="p">))</span>
+            <span class="k">return</span> <span class="n">left</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">left</span><span class="o">.</span><span class="n">_op2</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">inv</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span> <span class="p">))</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
             <span class="k">return</span> <span class="n">left</span><span class="o">.</span><span class="n">_op2</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span> <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -621,6 +665,8 @@
                 <span class="n">rowstr</span> <span class="o">=</span> <span class="s1">&#39;  &#39;</span>
                 <span class="c1"># format the columns</span>
                 <span class="k">for</span> <span class="n">colnum</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">_eps</span><span class="p">:</span>
+                        <span class="n">element</span> <span class="o">=</span> <span class="mi">0</span>
                     <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:&lt; 10g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 
                     <span class="k">if</span> <span class="n">rownum</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>

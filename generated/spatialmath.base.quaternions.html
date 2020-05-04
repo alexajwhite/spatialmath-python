@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>spatialmath.base.quaternions &mdash; Spatial Maths package 0.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="spatialmath.base.vectors" href="spatialmath.base.vectors.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Spatial Maths package
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spatialmath.html">Classes and functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../indices.html">Indices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.pose3d.html">spatialmath.pose3d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.quaternion.html">spatialmath.quaternion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.base.transforms2d.html">spatialmath.base.transforms2d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.base.transforms3d.html">spatialmath.base.transforms3d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.base.transformsNd.html">spatialmath.base.transformsNd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.base.vectors.html">spatialmath.base.vectors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">spatialmath.base.quaternions</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Maths package</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../indices.html">Indices</a> &raquo;</li>
+        
+      <li>spatialmath.base.quaternions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/spatialmath.base.quaternions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-spatialmath.base.quaternions">
+<span id="spatialmath-base-quaternions"></span><h1>spatialmath.base.quaternions<a class="headerlink" href="#module-spatialmath.base.quaternions" title="Permalink to this headline">¶</a></h1>
+<p>Created on Fri Apr 10 14:12:56 2020</p>
+<p>&#64;author: Peter Corke</p>
+<p class="rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.angle" title="spatialmath.base.quaternions.angle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angle</span></code></a>(q1, q2)</p></td>
+<td><p>Angle between two unit-quaternions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.conj" title="spatialmath.base.quaternions.conj"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conj</span></code></a>(q)</p></td>
+<td><p>Quaternion conjugate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.dot" title="spatialmath.base.quaternions.dot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dot</span></code></a>(q, w)</p></td>
+<td><p>Rate of change of unit-quaternion</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.dotb" title="spatialmath.base.quaternions.dotb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dotb</span></code></a>(q, w)</p></td>
+<td><p>Rate of change of unit-quaternion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.eye" title="spatialmath.base.quaternions.eye"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eye</span></code></a>()</p></td>
+<td><p>Create an identity quaternion</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.isequal" title="spatialmath.base.quaternions.isequal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isequal</span></code></a>(q1, q2[, tol, unitq])</p></td>
+<td><p>Test if quaternions are equal</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.isunit" title="spatialmath.base.quaternions.isunit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isunit</span></code></a>(q[, tol])</p></td>
+<td><p>Test if quaternion has unit length</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.matrix" title="spatialmath.base.quaternions.matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matrix</span></code></a>(q)</p></td>
+<td><p>Convert to 4x4 matrix equivalent</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.pow" title="spatialmath.base.quaternions.pow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pow</span></code></a>(q, power)</p></td>
+<td><p>Raise quaternion to a power</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.pure" title="spatialmath.base.quaternions.pure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pure</span></code></a>(v)</p></td>
+<td><p>Create a pure quaternion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.q2r" title="spatialmath.base.quaternions.q2r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">q2r</span></code></a>(q)</p></td>
+<td><p>Convert unit-quaternion to SO(3) rotation matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.q2v" title="spatialmath.base.quaternions.q2v"><code class="xref py py-obj docutils literal notranslate"><span class="pre">q2v</span></code></a>(q)</p></td>
+<td><p>Convert unit-quaternion to 3-vector</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.qnorm" title="spatialmath.base.quaternions.qnorm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qnorm</span></code></a>(q)</p></td>
+<td><p>Norm of a quaternion</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.qprint" title="spatialmath.base.quaternions.qprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qprint</span></code></a>(q[, delim, fmt, file])</p></td>
+<td><p>Format a quaternion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.qqmul" title="spatialmath.base.quaternions.qqmul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qqmul</span></code></a>(q1, q2)</p></td>
+<td><p>Quaternion multiplication</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.qvmul" title="spatialmath.base.quaternions.qvmul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qvmul</span></code></a>(q, v)</p></td>
+<td><p>Vector rotation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.r2q" title="spatialmath.base.quaternions.r2q"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r2q</span></code></a>(R[, check])</p></td>
+<td><p>Convert SO(3) rotation matrix to unit-quaternion</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.rand" title="spatialmath.base.quaternions.rand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rand</span></code></a>()</p></td>
+<td><p>Random unit-quaternion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.slerp" title="spatialmath.base.quaternions.slerp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slerp</span></code></a>(q0, q1, s[, shortest])</p></td>
+<td><p>Quaternion conjugate</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.unit" title="spatialmath.base.quaternions.unit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unit</span></code></a>(q[, tol])</p></td>
+<td><p>Create a unit quaternion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.quaternions.v2q" title="spatialmath.base.quaternions.v2q"><code class="xref py py-obj docutils literal notranslate"><span class="pre">v2q</span></code></a>(v)</p></td>
+<td><p>Convert 3-vector to unit-quaternion</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="spatialmath.base.vectors.html" class="btn btn-neutral float-left" title="spatialmath.base.vectors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Peter Corke
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

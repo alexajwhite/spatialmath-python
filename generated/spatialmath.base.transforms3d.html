@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>spatialmath.base.transforms3d &mdash; Spatial Maths package 0.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="spatialmath.base.transformsNd" href="spatialmath.base.transformsNd.html" />
+    <link rel="prev" title="spatialmath.base.transforms2d" href="spatialmath.base.transforms2d.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Spatial Maths package
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spatialmath.html">Classes and functions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../indices.html">Indices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.pose3d.html">spatialmath.pose3d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.quaternion.html">spatialmath.quaternion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.base.transforms2d.html">spatialmath.base.transforms2d</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">spatialmath.base.transforms3d</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.base.transformsNd.html">spatialmath.base.transformsNd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.base.vectors.html">spatialmath.base.vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatialmath.base.quaternions.html">spatialmath.base.quaternions</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Maths package</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../indices.html">Indices</a> &raquo;</li>
+        
+      <li>spatialmath.base.transforms3d</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/generated/spatialmath.base.transforms3d.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-spatialmath.base.transforms3d">
+<span id="spatialmath-base-transforms3d"></span><h1>spatialmath.base.transforms3d<a class="headerlink" href="#module-spatialmath.base.transforms3d" title="Permalink to this headline">¶</a></h1>
+<p>This modules contains functions to create and transform 3D rotation matrices
+and homogeneous tranformation matrices.</p>
+<p>Vector arguments are what numpy refers to as <code class="docutils literal notranslate"><span class="pre">array_like</span></code> and can be a list,
+tuple, numpy array, numpy row vector or numpy column vector.</p>
+<p>Versions:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Luis Fernando Lara Tobar and Peter Corke, 2008</p></li>
+<li><p>Josh Carrigg Hodson, Aditya Dua, Chee Ho Chan, 2017</p></li>
+<li><p>Peter Corke, 2020</p></li>
+</ol>
+</div></blockquote>
+<p>TODO:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>trinterp</p></li>
+<li><p>trjac, trjac2</p></li>
+<li><p>tranimate, tranimate2</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric">Functions</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.angvec2r" title="spatialmath.base.transforms3d.angvec2r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angvec2r</span></code></a>(theta, v[, unit])</p></td>
+<td><p>Create an SO(3) rotation matrix from rotation angle and axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.angvec2tr" title="spatialmath.base.transforms3d.angvec2tr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">angvec2tr</span></code></a>(theta, v[, unit])</p></td>
+<td><p>Create an SE(3) pure rotation from rotation angle and axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.colvec" title="spatialmath.base.transforms3d.colvec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colvec</span></code></a>(v)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.eul2r" title="spatialmath.base.transforms3d.eul2r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eul2r</span></code></a>(phi[, theta, psi, unit])</p></td>
+<td><p>Create an SO(3) rotation matrix from Euler angles</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.eul2tr" title="spatialmath.base.transforms3d.eul2tr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eul2tr</span></code></a>(phi[, theta, psi, unit])</p></td>
+<td><p>Create an SE(3) pure rotation matrix from Euler angles</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.ishom" title="spatialmath.base.transforms3d.ishom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ishom</span></code></a>(T[, check, tol])</p></td>
+<td><p>Test if matrix belongs to SE(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.isrot" title="spatialmath.base.transforms3d.isrot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isrot</span></code></a>(R[, check, tol])</p></td>
+<td><p>Test if matrix belongs to SO(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.issymbol" title="spatialmath.base.transforms3d.issymbol"><code class="xref py py-obj docutils literal notranslate"><span class="pre">issymbol</span></code></a>(x)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.oa2r" title="spatialmath.base.transforms3d.oa2r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">oa2r</span></code></a>(o[, a])</p></td>
+<td><p>Create SO(3) rotation matrix from two vectors</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.oa2tr" title="spatialmath.base.transforms3d.oa2tr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">oa2tr</span></code></a>(o[, a])</p></td>
+<td><p>Create SE(3) pure rotation from two vectors</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.rotx" title="spatialmath.base.transforms3d.rotx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotx</span></code></a>(theta[, unit])</p></td>
+<td><p>Create SO(3) rotation about X-axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.roty" title="spatialmath.base.transforms3d.roty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">roty</span></code></a>(theta[, unit])</p></td>
+<td><p>Create SO(3) rotation about Y-axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.rotz" title="spatialmath.base.transforms3d.rotz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rotz</span></code></a>(theta[, unit])</p></td>
+<td><p>Create SO(3) rotation about Z-axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.rpy2r" title="spatialmath.base.transforms3d.rpy2r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rpy2r</span></code></a>(roll[, pitch, yaw, unit, order])</p></td>
+<td><p>Create an SO(3) rotation matrix from roll-pitch-yaw angles</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.rpy2tr" title="spatialmath.base.transforms3d.rpy2tr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rpy2tr</span></code></a>(roll[, pitch, yaw, unit, order])</p></td>
+<td><p>Create an SE(3) rotation matrix from roll-pitch-yaw angles</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.tr2angvec" title="spatialmath.base.transforms3d.tr2angvec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tr2angvec</span></code></a>(T[, unit, check])</p></td>
+<td><p>Convert SO(3) or SE(3) to angle and rotation vector</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.tr2eul" title="spatialmath.base.transforms3d.tr2eul"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tr2eul</span></code></a>(T[, unit, flip, check])</p></td>
+<td><p>Convert SO(3) or SE(3) to ZYX Euler angles</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.tr2rpy" title="spatialmath.base.transforms3d.tr2rpy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tr2rpy</span></code></a>(T[, unit, order, check])</p></td>
+<td><p>Convert SO(3) or SE(3) to roll-pitch-yaw angles</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.transl" title="spatialmath.base.transforms3d.transl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transl</span></code></a>(x[, y, z])</p></td>
+<td><p>Create SE(3) pure translation, or extract translation from SE(3) matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.trexp" title="spatialmath.base.transforms3d.trexp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trexp</span></code></a>(S[, theta])</p></td>
+<td><p>Exponential of so(3) or se(3) matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.trlog" title="spatialmath.base.transforms3d.trlog"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trlog</span></code></a>(T[, check])</p></td>
+<td><p>Logarithm of SO(3) or SE(3) matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.trotx" title="spatialmath.base.transforms3d.trotx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trotx</span></code></a>(theta[, unit, t])</p></td>
+<td><p>Create SE(3) pure rotation about X-axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.troty" title="spatialmath.base.transforms3d.troty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">troty</span></code></a>(theta[, unit, t])</p></td>
+<td><p>Create SE(3) pure rotation about Y-axis</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.trotz" title="spatialmath.base.transforms3d.trotz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trotz</span></code></a>(theta[, unit, t])</p></td>
+<td><p>Create SE(3) pure rotation about Z-axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../spatialmath.html#spatialmath.base.transforms3d.trprint" title="spatialmath.base.transforms3d.trprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trprint</span></code></a>(T[, orient, label, file, fmt, unit])</p></td>
+<td><p>Compact display of SO(2) or SE(2) matrices</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="spatialmath.base.transformsNd.html" class="btn btn-neutral float-right" title="spatialmath.base.transformsNd" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="spatialmath.base.transforms2d.html" class="btn btn-neutral float-left" title="spatialmath.base.transforms2d" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Peter Corke
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
